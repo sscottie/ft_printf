@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 01:33:24 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/04 15:01:31 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/09/06 16:57:14 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	fill_len_acc(t_all *st)
 			st->acc = st->acc * 10 + (st->fmt[st->i] - 48);
 	}
 	fill_size(st);
-	if (ft_strcmp(&st->fmt_cp[st->i], "%cspdiuoxX") == 1)
+	if (ft_strcmp(&st->fmt_cp[st->i], "cspdiuoxXf\%") == 1)
 		st->type = st->fmt_cp[st->i];
 }
 

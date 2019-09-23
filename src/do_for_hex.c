@@ -6,73 +6,94 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 23:50:38 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/05 00:03:33 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/09/19 03:31:07 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	check_letter(char *s, t_all *st)
+char	*fill_with_hex(t_all *st, char *s, char *s_buf, int len)
 {
-	int i;
+	s = ft_strcat(ft_memset(s_buf, '0', st->acc - len), s);
+	if (st->flag[2] == '#')
+	{
+		s_buf = st->fmt_cp[st->i] == 'X' ? "0X\0" : "0x\0";
+		s = ft_strcat(s_buf, s);
+		free(s_buf);
+	}
+	return (s);
+}
+
+char	*check_letter(char *s, t_all *st)
+{
+	int	i;
 
 	i = 0;
-	if (st->type == 'x')
+	if (st->fmt_cp[st->i] == 'x')
 		while (s[i] != '\0')
+		{
 			s[i] = ft_tolower(s[i]);
-	else if (st->type == 'X')
+			i++;
+		}
+	else if (st->fmt_cp[st->i] == 'X')
 		while (s[i] != '\0')
+		{
 			s[i] = ft_toupper(s[i]);
+			i++;
+		}
+	return (s);
 }
 
 void	hex_with_flags(t_all *st, char *s, int len)
 {
 	if (st->flag[0] == '-')
 	{
+		if (st->flag[1] != 'e')
+		{
+			write(1, &st->flag[1], 1);
+			st->len--;
+		}
 		write(1, s, len);
 		while (st->len-- - len > 0)
 			write(1, " ", 1);
 	}
-	else if (st->flag[0] == '0')
+	else if (st->flag[0] == '0' && st->acc == -1)
 	{
+		if (st->flag[1] != 'e')
+		{
+			write(1, &st->flag[1], 1);
+			st->len--;
+		}
 		while (st->len-- - len > 0)
 			write(1, "0", 1);
 		write(1, s, len);
 	}
 	else
-	{
-		while (st->len-- - len > 0)
-			write(1, " ", 1);
-		if (st->flag[1] != 'e')
-		{
-			write(1, " ", 1);
-			write(1, &st->flag[1], 1);
-		}
-		write(1, s, len);
-	}
+		do_for_positive(st, s, len);
 }
 
 void	do_for_hex(t_all *st)
 {
-	int			buf;
-	char		*s;
-	int			len;
-	char		*s_buf;
+	unsigned int	buf;
+	char			*s;
+	int				len;
+	char			*s_buf;
 
-	buf = (int)va_arg(st->args, unsigned int);
-	s = ft_itoa_base(abs(buf), 16);
-	check_letter(s, st);
-	len = ft_strlen(s);
-	if (st->acc > len && (s_buf = ft_memalloc(st->acc - len)) != NULL)
+	buf = (unsigned int)va_arg(st->args, void *);
+	if (buf == 0 && st->acc != -1)
+		null_with_acc(st);
+	else
 	{
-		s = ft_strcat(ft_memset(s_buf, '0', st->acc - len), s);
+		s = ft_itoa_base(buf, 16);
+		s = check_letter(s, st);
 		len = ft_strlen(s);
-		free(s_buf);
+		if (st->acc > len && (s_buf = ft_memalloc(st->acc - len)) != NULL)
+		{
+			s = fill_with_hex(st, s, s_buf, len);
+			len = ft_strlen(s);
+		}
+		if (st->flag[2] == '#' && (s_buf = ft_memalloc(2)) != NULL)
+			s = ft_strcat(fill_with_hex(st, s, s_buf, len), s);
+		hex_with_flags(st, s, len);
 	}
-	if (st->flag[0] != 'e')
-	{
-		if (st->flag[1] != 'e')
-			write(1, &st->flag[1], 1);
-	}
-	hex_with_flags(st, s, len);
 }

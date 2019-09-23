@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 16:28:48 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/04 23:42:01 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/09/19 04:37:09 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,19 @@ void			ft_swap(int *a, int *b);
 int 			ft_strnchr(const char *s, int c);
 int				ft_intsize(int nbr);
 char			*ft_itoa_base(int value, int base);
+char			*ft_l_itoa(long n);
+char			*ft_ll_itoa(long long n);
+char			*ft_l_itoa_base(long value, int base);
+char			*ft_ll_itoa_base(long long value, int base);
+long long		ft_atoi_base(char *nb, int base);
+int				ft_power(int nb, int power);
+int				ft_isnan(double num);
+char 			*ft_ftoa(double n, int precision);
+char 			*ft_l_ftoa(long double n, int precision);
+double			ft_double_power(double nb, double power);
+char			*ft_strjoinfree(char *s1, char *s2);
+int				ft_reverse_int(int nbr);
+long			ft_round(double n, int precision);
+// long double		ft_l_round(long double d, int pres);
 
 #endif

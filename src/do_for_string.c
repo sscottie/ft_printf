@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 17:49:10 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/04 16:27:34 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/09/19 03:38:09 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,9 @@ void	do_for_string(t_all *st)
 	}
 	else
 		s = buf;
-
-	len = strlen(s);
+	len = ft_strlen(s);
 	if ((st->len == 0 || st->len <= len) && st->flag[0] == 'e')
 		write(1, s, len);
 	else
 		string_with_flags(st, s, len);
-	// if (s)
-	// 	free(s);
 }

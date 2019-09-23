@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_for_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sscottie <sscottie@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 22:25:46 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/01 22:59:15 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/09/19 03:30:12 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	do_for_percent(t_all *st)
 		st->len--;
 	}
 	else
-	{	
+	{
 		while (st->len-- > 1)
 			write(1, " ", 1);
 		write(1, &c, 1);
@@ -58,7 +58,7 @@ void	do_for_char(t_all *st)
 		st->len--;
 	}
 	else
-	{	
+	{
 		while (st->len-- > 1)
 			write(1, " ", 1);
 		write(1, &c, 1);

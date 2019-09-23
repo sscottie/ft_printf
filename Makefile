@@ -6,7 +6,7 @@
 #    By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/01 19:44:17 by sscottie          #+#    #+#              #
-#    Updated: 2019/09/05 16:35:17 by sscottie         ###   ########.fr        #
+#    Updated: 2019/09/16 05:19:40 by sscottie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,15 @@ CFILE =		ft_printf.c \
 			do_for_int.c \
 			do_for_u_int.c \
 			do_for_oct.c \
-			do_for_hex.c
+			do_for_hex.c \
+			do_for_null.c \
+			crossroads.c \
+			do_for_sized_int.c \
+			do_for_sized_u.c \
+			do_for_sized_oct.c \
+			do_for_sized_hex.c \
+			do_for_pointer.c \
+			do_for_floats.c
 
 CFIND =		$(CFILE:%=$(SRC_DIR)%)
 
@@ -39,39 +47,39 @@ OFILE =		$(CFILE:%.c=%.o)
 
 OBJ =		$(addprefix $(OBJ_DIR), $(OFILE))
 
-all: $(OBJ_DIR) $(NAME)
+all: $(OBJ_DIR) $(NAME) $(CFIND)
 
 $(OBJ_DIR):
-		@mkdir -p $(OBJ_DIR)
-		@echo Create: ft_printf Object directory
+	@mkdir -p $(OBJ_DIR)
+	@echo Create: ft_printf Object directory
 
 $(NAME): $(OBJ)
-		@echo LIBFT START
-		@make -C $(LIB_DIR)
-		@echo Copying $(LIBFT_A) to root.
-		@cp $(LIB_DIR)$(LIBFT_A) .
-		@mv $(LIBFT_A) $(NAME)
-		@ar rc $(NAME) $(addprefix $(OBJ_DIR), $(OFILE))
-		@ranlib $(NAME)
-		@echo Merged: $(NAME) with $(LIBFT_A)
-		@echo FT_PRINTF COMPLETE
+	@echo LIBFT START
+	@make -C $(LIB_DIR)
+	@echo Copying $(LIBFT_A) to root.
+	@cp $(LIB_DIR)$(LIBFT_A) .
+	@mv $(LIBFT_A) $(NAME)
+	@ar rc $(NAME) $(addprefix $(OBJ_DIR), $(OFILE))
+	@ranlib $(NAME)
+	@echo Merged: $(NAME) with $(LIBFT_A)
+	@echo FT_PRINTF COMPLETE
 
 $(OBJ): $(CFIND)
-		@$(MAKE) $(OFILE)
+	@$(MAKE) $(OFILE)
 
 $(OFILE):
-		@echo Create: $(@:obj/%=%)
-		@$(COMP) $(OBJ_DIR)$@ $(SRC_DIR)$(@:%.o=%.c)
+	@echo Create: $(@:obj/%=%)
+	@$(COMP) $(OBJ_DIR)$@ $(SRC_DIR)$(@:%.o=%.c)
 
 clean:
-		@/bin/rm -rf $(OBJ_DIR)
-		@make -C $(LIB_DIR) clean
-		@echo Cleaned ft_printf object files
+	@/bin/rm -rf $(OBJ_DIR)
+	@make -C $(LIB_DIR) clean
+	@echo Cleaned ft_printf object files
 
 fclean: clean
-		@/bin/rm -f $(NAME)
-		@make -C $(LIB_DIR) fclean
-		@echo Cleaned $(NAME)
+	@/bin/rm -f $(NAME)
+	@make -C $(LIB_DIR) fclean
+	@echo Cleaned $(NAME)
 
 re: fclean all
 
