@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 01:22:56 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/19 03:29:06 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/10/02 19:54:19 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	do_for_l_oct(t_all *st)
 		if (st->flag[0] != 'e')
 		{
 			if (st->flag[1] != 'e')
-				write(1, &st->flag[1], 1);
+				ft_fwrite(0, &st->flag[1], 1);
 		}
 		oct_with_flags(st, s, len);
 	}
@@ -62,7 +62,7 @@ void	do_for_ll_oct(t_all *st)
 		if (st->flag[0] != 'e')
 		{
 			if (st->flag[1] != 'e')
-				write(1, &st->flag[1], 1);
+				ft_fwrite(0, &st->flag[1], 1);
 		}
 		oct_with_flags(st, s, len);
 	}
@@ -90,7 +90,7 @@ void	do_for_h_oct(t_all *st)
 		if (st->flag[0] != 'e')
 		{
 			if (st->flag[1] != 'e')
-				write(1, &st->flag[1], 1);
+				ft_fwrite(0, &st->flag[1], 1);
 		}
 		oct_with_flags(st, s, len);
 	}
@@ -118,7 +118,7 @@ void	do_for_hh_oct(t_all *st)
 		if (st->flag[0] != 'e')
 		{
 			if (st->flag[1] != 'e')
-				write(1, &st->flag[1], 1);
+				ft_fwrite(0, &st->flag[1], 1);
 		}
 		oct_with_flags(st, s, len);
 	}

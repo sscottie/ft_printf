@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 02:15:21 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/06 05:01:30 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/10/02 19:53:20 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	do_for_l_hex(t_all *st)
 		if (st->flag[0] != 'e')
 		{
 			if (st->flag[1] != 'e')
-				write(1, &st->flag[1], 1);
+				ft_fwrite(0, &st->flag[1], 1);
 		}
 		hex_with_flags(st, s, len);
 	}
@@ -64,7 +64,7 @@ void	do_for_ll_hex(t_all *st)
 		if (st->flag[0] != 'e')
 		{
 			if (st->flag[1] != 'e')
-				write(1, &st->flag[1], 1);
+				ft_fwrite(0, &st->flag[1], 1);
 		}
 		hex_with_flags(st, s, len);
 	}
@@ -93,7 +93,7 @@ void	do_for_h_hex(t_all *st)
 		if (st->flag[0] != 'e')
 		{
 			if (st->flag[1] != 'e')
-				write(1, &st->flag[1], 1);
+				ft_fwrite(0, &st->flag[1], 1);
 		}
 		hex_with_flags(st, s, len);
 	}
@@ -122,7 +122,7 @@ void	do_for_hh_hex(t_all *st)
 		if (st->flag[0] != 'e')
 		{
 			if (st->flag[1] != 'e')
-				write(1, &st->flag[1], 1);
+				ft_fwrite(0, &st->flag[1], 1);
 		}
 		hex_with_flags(st, s, len);
 	}

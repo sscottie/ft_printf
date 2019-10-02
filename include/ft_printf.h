@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 19:35:27 by sscottie          #+#    #+#             */
-/*   Updated: 2019/10/01 21:30:16 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/10/02 19:44:40 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ void	do_for_ll_hex(t_all *st);
 void	do_for_floats(t_all *st);
 void	do_for_l_floats(t_all *st);
 int		ft_fwrite(const char flag, const char *input, size_t len);
-void	ft_fwrite_c(const char flag, const char *input, size_t len);
-void	ft_fwrite_d(const char flag, const char *input, size_t len);
+int		ft_fwrite_c(const char flag, const char *input, size_t len);
 
 #endif

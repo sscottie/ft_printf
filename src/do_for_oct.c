@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 23:38:41 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/19 04:31:03 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/10/02 19:51:46 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,23 @@ void	oct_with_flags(t_all *st, char *s, int len)
 	{
 		if (st->flag[1] != 'e')
 		{
-			write(1, &st->flag[1], 1);
+			ft_fwrite(0, &st->flag[1], 1);
 			st->len--;
 		}
-		write(1, s, len);
+		ft_fwrite(0, s, len);
 		while (st->len-- - len > 0)
-			write(1, " ", 1);
+			ft_fwrite(0, " ", 1);
 	}
 	else if (st->flag[0] == '0' && st->acc == -1)
 	{
 		if (st->flag[1] != 'e')
 		{
-			write(1, &st->flag[1], 1);
+			ft_fwrite(0, &st->flag[1], 1);
 			st->len--;
 		}
 		while (st->len-- - len > 0)
-			write(1, "0", 1);
-		write(1, s, len);
+			ft_fwrite(0, "0", 1);
+		ft_fwrite(0, s, len);
 	}
 	else
 		do_for_positive(st, s, len);

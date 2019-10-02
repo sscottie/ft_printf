@@ -1,8 +1,0 @@
-obj
-main.c
-temp
-a.out*
-.vscode
-*.o
-curqui_test
-.DS_Store

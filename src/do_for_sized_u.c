@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 01:03:10 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/06 04:18:15 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/10/02 19:54:40 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	do_for_l_uns(t_all *st)
 		if (st->flag[0] != 'e')
 		{
 			if (st->flag[1] != 'e')
-				write(1, &st->flag[1], 1);
+				ft_fwrite(0, &st->flag[1], 1);
 		}
 		u_int_with_flags(st, s, len);
 	}
@@ -64,7 +64,7 @@ void	do_for_ll_uns(t_all *st)
 		if (st->flag[0] != 'e')
 		{
 			if (st->flag[1] != 'e')
-				write(1, &st->flag[1], 1);
+				ft_fwrite(0, &st->flag[1], 1);
 		}
 		u_int_with_flags(st, s, len);
 	}
@@ -93,7 +93,7 @@ void	do_for_h_uns(t_all *st)
 		if (st->flag[0] != 'e')
 		{
 			if (st->flag[1] != 'e')
-				write(1, &st->flag[1], 1);
+				ft_fwrite(0, &st->flag[1], 1);
 		}
 		u_int_with_flags(st, s, len);
 	}
@@ -122,7 +122,7 @@ void	do_for_hh_uns(t_all *st)
 		if (st->flag[0] != 'e')
 		{
 			if (st->flag[1] != 'e')
-				write(1, &st->flag[1], 1);
+				ft_fwrite(0, &st->flag[1], 1);
 		}
 		u_int_with_flags(st, s, len);
 	}

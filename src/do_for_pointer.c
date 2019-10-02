@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 23:50:38 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/19 08:03:08 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/10/02 19:52:44 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static void	do_for_point(t_all *st, char *s, int len)
 {
 	if (st->len != 0 && st->len > len)
 		while (st->len-- - len > 0)
-			write(1, " ", 1);
+			ft_fwrite(0, " ", 1);
 	else if (st->len != 0 && st->len > len)
 		while (st->len-- - len > 1)
-			write(1, " ", 1);
-	write(1, "0x10", 4);
-	write(1, s, len);
+			ft_fwrite(0, " ", 1);
+	ft_fwrite(0, "0x10", 4);
+	ft_fwrite(0, s, len);
 }
 
 // static char	*fill_with_address(t_all *st, char *s, char *s_buf, int len)
@@ -48,17 +48,17 @@ static void	pointer_with_flags(t_all *st, char *s, int len)
 {
 	if (st->flag[0] == '-')
 	{
-		write(1, "0x10", 4);
-		write(1, s, len);
+		ft_fwrite(0, "0x10", 4);
+		ft_fwrite(0, s, len);
 		while (st->len-- - len > 0)
-			write(1, " ", 1);
+			ft_fwrite(0, " ", 1);
 	}
 	else if (st->flag[0] == '0' && st->acc == -1)
 	{
-		write(1, "0x10", 4);
-		write(1, s, len);
+		ft_fwrite(0, "0x10", 4);
+		ft_fwrite(0, s, len);
 		while (st->len-- - len > 0)
-			write(1, "0", 1);
+			ft_fwrite(0, "0", 1);
 	}
 	else
 		do_for_point(st, s, len);
@@ -75,7 +75,7 @@ void		do_for_pointer(t_all *st)
 	if (buf == 0 && st->acc != -1)
 		null_p_with_acc(st);
 	else if (buf == 0 && st->flag[0] == 'e' && st->len == 0 && st->acc == -1)
-		write(1, "0x0", 3);
+		ft_fwrite(0, "0x0", 3);
 	else
 	{
 		s = ft_itoa_base(buf, 16);
