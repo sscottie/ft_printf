@@ -6,7 +6,7 @@
 #    By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/01 19:44:17 by sscottie          #+#    #+#              #
-#    Updated: 2019/09/16 05:19:40 by sscottie         ###   ########.fr        #
+#    Updated: 2019/10/01 19:13:47 by sscottie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ CFILE =		ft_printf.c \
 			do_for_sized_oct.c \
 			do_for_sized_hex.c \
 			do_for_pointer.c \
-			do_for_floats.c
+			do_for_floats.c \
+			ft_fwrite.c
 
 CFIND =		$(CFILE:%=$(SRC_DIR)%)
 

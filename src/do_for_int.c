@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 23:05:27 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/16 02:07:37 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/10/01 19:36:26 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,59 @@ void	do_for_positive(t_all *st, char *s, int len)
 {
 	if (st->len != 0 && st->len > len && st->flag[1] == 'e')
 		while (st->len-- - len > 0)
-			write(1, " ", 1);
+		{
+			ft_fwrite(0, " ", 1);
+			st->count++;	
+		}
 	else if (st->len != 0 && st->len > len && st->flag[1] != 'e')
 		while (st->len-- - len > 1)
-			write(1, " ", 1);
+		{
+			ft_fwrite(0, " ", 1);
+			st->count++;
+		}
 	if (st->flag[1] != 'e')
-		write(1, &st->flag[1], 1);
-	write(1, s, len);
+	{
+		ft_fwrite(0, &st->flag[1], 1);
+		st->count++;	
+	}
+	ft_fwrite(0, s, len);
+	st += len;
 }
 
 void	do_for_negative(t_all *st, char *s, int len)
 {
 	if (st->flag[0] == '-')
 	{
-		write(1, "-", 1);
-		write(1, s, len);
+		ft_fwrite(0, "-", 1);
+		ft_fwrite(0, s, len);
+		st->count += 2;
 		while (--st->len - len > 0)
-			write(1, " ", 1);
+		{
+			ft_fwrite(0, " ", 1);
+			st->count++;
+		}
 	}
 	else if (st->flag[0] == '0' && st->acc == -1)
 	{
-		write(1, "-", 1);
+		ft_fwrite(0, "-", 1);
 		while (--st->len - len > 0)
-			write(1, "0", 1);
-		write(1, s, len);
+		{
+			ft_fwrite(0, "0", 1);
+			st->count++;
+		}
+		ft_fwrite(0, s, len);
+		st->count += len + 1;
 	}
 	else
 	{
 		while (st->len-- - len > 1)
-			write(1, " ", 1);
-		write(1, "-", 1);
-		write(1, s, len);
+		{
+			ft_fwrite(0, " ", 1);
+			st->count++;
+		}
+		ft_fwrite(0, "-", 1);
+		ft_fwrite(0, s, len);
+		st->count += len + 1;
 	}
 }
 
@@ -56,23 +78,33 @@ void	int_with_flags(t_all *st, char *s, int len)
 	{
 		if (st->flag[1] != 'e')
 		{
-			write(1, &st->flag[1], 1);
+			ft_fwrite(0, &st->flag[1], 1);
+			st->count++;
 			st->len--;
 		}
-		write(1, s, len);
+		ft_fwrite(0, s, len);
+		st->count += len;;
 		while (st->len-- - len > 0)
-			write(1, " ", 1);
+		{
+			ft_fwrite(0, " ", 1);
+			st->count++;	
+		}
 	}
 	else if (st->flag[0] == '0' && st->acc == -1)
 	{
 		if (st->flag[1] != 'e')
 		{
-			write(1, &st->flag[1], 1);
+			ft_fwrite(0, &st->flag[1], 1);
 			st->len--;
+			st->count++;
 		}
 		while (st->len-- - len > 0)
-			write(1, "0", 1);
-		write(1, s, len);
+		{
+			ft_fwrite(0, "0", 1);
+			st->count++;	
+		}
+		ft_fwrite(0, s, len);
+		st->count += len;
 	}
 	else
 		do_for_positive(st, s, len);

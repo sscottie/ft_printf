@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 21:54:14 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/19 03:34:59 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/10/01 21:30:59 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,17 @@ int		pre_format(t_all *st)
 int		parse(t_all *st)
 {
 	int	i;
-
+	int len;
+	
+	len = 0;
 	i = ft_strnchr(st->fmt_cp, '%');
 	if (i == -1)
 	{
 		write(1, st->fmt_cp, ft_strlen(st->fmt_cp));
-		return (0);
+		return (ft_strlen(st->fmt_cp));
 	}
 	else
+	{
 		while (st->fmt_cp[st->i] != '\0')
 		{
 			if (st->fmt_cp[st->i] == '%' && st->fmt_cp[st->i + 1] != '\0')
@@ -59,8 +62,11 @@ int		parse(t_all *st)
 			else if (st->fmt_cp[st->i] == '%' && st->fmt_cp[st->i + 1] == '\0')
 				return (0);
 			else
-				write(1, &st->fmt_cp[st->i], 1);
+				ft_fwrite(0, &st->fmt_cp[st->i], 1);
 			st->i++;
 		}
-	return (st->count);
+		
+		len = ft_fwrite(1, NULL, 0);
+	}
+	return (len);
 }

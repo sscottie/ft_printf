@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 17:49:10 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/19 03:38:09 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/10/01 20:12:15 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ void	string_with_flags(t_all *st, char *s, int len)
 {
 	if (st->flag[0] == '-')
 	{
-		write(1, s, len);
+		ft_fwrite(0, s, len);
 		while (st->len-- - len > 0)
-			write(1, " ", 1);
+			ft_fwrite(0, " ", 1);
 	}
 	else if (st->flag[0] == '0')
 	{
 		while (st->len-- - len > 0)
-			write(1, "0", 1);
-		write(1, s, len);
+			ft_fwrite(0, "0", 1);
+		ft_fwrite(0, s, len);
 	}
 	else
 	{
 		while (st->len-- - len > 0)
-			write(1, " ", 1);
-		write(1, s, len);
+			ft_fwrite(0, " ", 1);
+		ft_fwrite(0, s, len);
 	}
 }
 
@@ -53,7 +53,7 @@ void	do_for_string(t_all *st)
 		s = buf;
 	len = ft_strlen(s);
 	if ((st->len == 0 || st->len <= len) && st->flag[0] == 'e')
-		write(1, s, len);
+		ft_fwrite(0, s, len);
 	else
 		string_with_flags(st, s, len);
 }

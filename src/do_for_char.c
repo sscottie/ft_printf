@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 22:25:46 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/19 03:30:12 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/10/01 20:43:31 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ void	do_for_percent(t_all *st)
 	c = '%';
 	if (st->flag[0] == '-')
 	{
-		write(1, &c, 1);
+		ft_fwrite(0, &c, 1);
 		while (st->len-- > 1)
 			write(1, " ", 1);
 	}
 	else if (st->flag[0] == '0')
 	{
 		while (st->len-- > 1)
-			write(1, "0", 1);
-		write(1, &c, 1);
+			ft_fwrite(0, "0", 1);
+		ft_fwrite(0, &c, 1);
 		st->len--;
 	}
 	else
 	{
 		while (st->len-- > 1)
-			write(1, " ", 1);
-		write(1, &c, 1);
+			ft_fwrite(0, " ", 1);
+		ft_fwrite(0, &c, 1);
 		st->len--;
 	}
 }
@@ -46,22 +46,22 @@ void	do_for_char(t_all *st)
 	c = (char)va_arg(st->args, unsigned int);
 	if (st->flag[0] == '-')
 	{
-		write(1, &c, 1);
+		ft_fwrite_c(0, &c, 1);
 		while (st->len-- > 1)
-			write(1, " ", 1);
+			ft_fwrite(0, " ", 1);
 	}
 	else if (st->flag[0] == '0')
 	{
 		while (st->len-- > 1)
-			write(1, "0", 1);
-		write(1, &c, 1);
+			ft_fwrite(0, "0", 1);
+		ft_fwrite_c(0, &c, 1);
 		st->len--;
 	}
 	else
 	{
 		while (st->len-- > 1)
-			write(1, " ", 1);
-		write(1, &c, 1);
+			ft_fwrite(0, " ", 1);
+		ft_fwrite_c(0, &c, 1);
 		st->len--;
 	}
 }

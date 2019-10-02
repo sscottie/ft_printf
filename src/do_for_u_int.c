@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 23:05:27 by sscottie          #+#    #+#             */
-/*   Updated: 2019/09/19 03:59:24 by sscottie         ###   ########.fr       */
+/*   Updated: 2019/10/01 18:23:44 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	do_for_u_int(t_all *st)
 	int				len;
 	char			*s_buf;
 
-	buf = (unsigned int)va_arg(st->args, void *);
+	buf = (unsigned int)va_arg(st->args, unsigned int);
 	if (buf == 0 && st->acc != -1)
 		null_with_acc(st);
 	else
